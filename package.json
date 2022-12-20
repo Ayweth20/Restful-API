@@ -1,0 +1,26 @@
+{
+  "name": "restful-api",
+  "version": "1.0.0",
+  "description": "Node.JS RESTful API with Express, Sequelize and MySQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ayweth20/Restful-API.git"
+  },
+  "author": "Ayweth20",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ayweth20/Restful-API/issues"
+  },
+  "homepage": "https://github.com/Ayweth20/Restful-API#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
+    "sequelize": "^6.28.0"
+  }
+}
