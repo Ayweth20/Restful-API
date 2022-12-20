@@ -10,6 +10,7 @@
 - Annuler l'ajout d'un fichier particulier : `git restore <file>`
 - Ajouter les fichiers modifiés : `git commit -m "Message"`
     (ℹ️) Message type : "Prénom - Add / Update / Delete - Nom de la fonctionnalité"
+- Envoyer les modifications sur le repo : `git push`
 - Récupérer les dernières modifications des autres : `git pull`
 
 ### Docker (optionnel)
