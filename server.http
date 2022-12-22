@@ -1,1 +1,36 @@
-GET http://localhost:1503/test
+### WELCOME PAGE
+GET http://localhost:1503/welcome
+
+### EASTER EGG ;p
+GET http://localhost:1503/newyear
+
+### CREATE A NEW USER
+POST http://localhost:1503/users
+Content-Type: application/json
+
+{
+    "name" : "DOE John",
+    "email" : "john@doe.com",
+    "password" : "J0hnD0e1998*",
+    "dateOfBirth" : "1998-07-15",
+    "passportNumber" : "USA7654321",
+    "passportCountry" : "USA",
+    "role" : "passenger"
+}
+
+### GET ALL USERS
+GET http://localhost:1503/users
+
+### GET A USER BY ID
+GET http://localhost:1503/users/1
+
+### UPDATE A USER BY ID
+PUT http://localhost:1503/users/1
+Content-Type: application/json
+
+{
+    "name" : "SPARROW Jack"
+}
+
+### DELETE A USER BY ID
+DELETE http://localhost:1503/users/2
