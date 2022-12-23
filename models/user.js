@@ -21,44 +21,46 @@ User.init({
         allowNull: false,
         validate: {
             isEmail: true,
-        },
+        }
     },
     password: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
             // At least 8 caracters, 1 uppercase, 1 lowercase, 1 number, 1 special character
-            is: /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=(?:.*[!@#$%^&*()\-_=+{};:,<.>])).{7,})\S$/,
-        },
+            is: /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=(?:.*[!@#$%^&*()\-_=+{};:,<.>])).{7,})\S$/
+        }
     },
     dateOfBirth: {
         type: DataTypes.DATE,
         allowNull: false,
         validate: {
             isDate: true,
-        },
+        }
     },
     passportNumber: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
+            // 3 uppercase letters and 7 numbers
             is: /^[A-Z]{3}[0-9]{7}$/,
-        },
+        }
     },
     passportCountry: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
+            // 3 uppercase letters
             is: /^[A-Z]{3}$/,
-        },
+        }
     },
     role: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
             isIn: [["admin", "pilot" , "passenger"]],
-        },
-    },
+        }
+    }
 }, {
     sequelize: database,
     timestamps: false,

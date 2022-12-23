@@ -4,7 +4,7 @@ const { User } = require("../models");
 const router = new Router();
 
 //POST (create) a new user
-router.post("/users", (req, res) => {
+router.post("/user", (req, res) => {
     const user = new User(req.body);
     user
         .save()
@@ -23,7 +23,7 @@ router.get("/users", (req, res) => {
 });
 
 //GET a user by id
-router.get("/users/:id", async (req, res) => {
+router.get("/user/:id", async (req, res) => {
     const user = await User.findByPk(parseInt(req.params.id), {
         attributes: {exclude: "password"}
     });
@@ -35,7 +35,7 @@ router.get("/users/:id", async (req, res) => {
 });
 
 //UPDATE a user by id
-router.put("/users/:id", async (req, res) => {
+router.put("/user/:id", async (req, res) => {
     User.update(req.body, {
         where: {id: parseInt(req.params.id)},
         individualHooks: true,
@@ -54,7 +54,7 @@ router.put("/users/:id", async (req, res) => {
 });
 
 //DELETE a user by id
-router.delete("/users/:id", async (req, res) => {
+router.delete("/user/:id", async (req, res) => {
     User.destroy({
         where: {id: parseInt(req.params.id)},
     })

@@ -4,8 +4,12 @@ GET http://localhost:1503/welcome
 ### EASTER EGG ;p
 GET http://localhost:1503/newyear
 
+##################################
+############   USER   ############
+##################################
+
 ### CREATE A NEW USER
-POST http://localhost:1503/users
+POST http://localhost:1503/user
 Content-Type: application/json
 
 {
@@ -22,15 +26,51 @@ Content-Type: application/json
 GET http://localhost:1503/users
 
 ### GET A USER BY ID
-GET http://localhost:1503/users/1
+GET http://localhost:1503/user/1
 
 ### UPDATE A USER BY ID
-PUT http://localhost:1503/users/1
+PUT http://localhost:1503/user/1
 Content-Type: application/json
 
 {
-    "name" : "SPARROW Jack"
+    "name" : "GRISVAL Thibault"
 }
 
 ### DELETE A USER BY ID
-DELETE http://localhost:1503/users/2
+DELETE http://localhost:1503/user/2
+
+##################################
+###########   AIRPORT  ###########
+##################################
+
+### CREATE A NEW AIRPORT
+POST http://localhost:1503/airport
+Content-Type: application/json
+
+{
+    "name" : "Starptautiska lidosta Riga",
+    "code" : "LET001",
+    "city" : "Riga",
+    "country" : "LATVIA"
+}
+
+### GET ALL AIRPORTS
+GET http://localhost:1503/airports
+
+### GET ALL AIRPORTS BY COUNTRY
+GET http://localhost:1503/airports?country=France
+
+### GET AN AIRPORT BY ID
+GET http://localhost:1503/airport/3
+
+### UPDATE AN AIRPORT BY ID
+PUT http://localhost:1503/airport/5
+Content-Type: application/json
+
+{
+    "code" : "LAT001"
+}
+
+### DELETE AN AIRPORT BY ID
+DELETE http://localhost:1503/airport/3
+
