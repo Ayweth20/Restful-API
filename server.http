@@ -74,3 +74,35 @@ Content-Type: application/json
 ### DELETE AN AIRPORT BY ID
 DELETE http://localhost:1503/airport/3
 
+##################################
+############  BOOKING ############
+##################################
+
+### CREATE A NEW BOOKING
+POST http://localhost:1503/booking
+Content-Type: application/json
+
+{
+    "flightID" : "19",
+    "userId" : "04",
+    "seatNumber" : "07F",
+    "status" : "in flight",
+    "dateBooked" : "2022-10-10"
+}
+
+### GET ALL BOOKINGS
+GET http://localhost:1503/bookings
+
+### GET A BOOKING BY ID
+GET http://localhost:1503/booking/4
+
+### UPDATE AN BOOKING BY ID
+PUT http://localhost:1503/booking/5
+Content-Type: application/json
+
+{
+    "seatNumber" : "11A"
+}
+
+### DELETE AN BOOKING BY ID
+DELETE http://localhost:1503/booking/3
