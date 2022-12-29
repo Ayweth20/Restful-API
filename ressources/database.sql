@@ -13,8 +13,8 @@ CREATE TABLE airports (
 CREATE TABLE flights (
     id INT PRIMARY KEY AUTO_INCREMENT,
     airline VARCHAR(255) NOT NULL,
-    dateStart DATE NOT NULL,
-    dateEnd DATE NOT NULL,
+    dateStart DATETIME NOT NULL,
+    dateEnd DATETIME NOT NULL,
     origin VARCHAR(255) NOT NULL,
     arrival VARCHAR(255) NOT NULL,
     status VARCHAR(255) NOT NULL,
@@ -36,9 +36,9 @@ CREATE TABLE users (
 
 CREATE TABLE bookings (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    flightID INT NOT NULL,
+    flightID VARCHAR(3) NOT NULL,
     userId INT NOT NULL,
-    seatNumber INT NOT NULL,
+    seatNumber VARCHAR(3) NOT NULL,
     status VARCHAR(255) NOT NULL,
     dateBooked DATE NOT NULL,
     FOREIGN KEY (flightID) REFERENCES flights(id),
