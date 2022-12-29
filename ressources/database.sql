@@ -36,7 +36,7 @@ CREATE TABLE users (
 
 CREATE TABLE bookings (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    flightID VARCHAR(3) NOT NULL,
+    flightID INT NOT NULL,
     userId INT NOT NULL,
     seatNumber VARCHAR(3) NOT NULL,
     status VARCHAR(255) NOT NULL,
