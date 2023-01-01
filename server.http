@@ -106,3 +106,39 @@ Content-Type: application/json
 
 ### DELETE AN BOOKING BY ID
 DELETE http://localhost:1503/booking/3
+
+##################################
+############  FLIGHTS ############
+##################################
+
+### CREATE A NEW FLIGHT
+POST http://localhost:1503/flight
+Content-Type: application/json
+
+{
+    "airline" : "Air France",
+    "dateStart" : "2023-02-20T04:33:12.000Z",
+    "dateEnd" : "2023-02-20T07:54:12.000Z",
+    "origin" : "LET001",
+    "arrival" : "FRA001",
+    "status" : "planned",
+    "capacity" : 128
+
+}
+
+### GET ALL FLIGHTS
+GET http://localhost:1503/flights
+
+### GET A FLIGHT BY ID
+GET http://localhost:1503/flight/1
+
+### UPDATE A FLIGHT BY ID
+PUT http://localhost:1503/flight/2
+Content-Type: application/json
+
+{
+    "airline" : "RyanAir"
+}
+
+### DELETE A FLIGHT BY ID
+DELETE http://localhost:1503/flight/3

@@ -2,6 +2,7 @@ const express = require("express");
 const usersRouter = require("./routes/users");
 const airportsRouter = require("./routes/airports");
 const bookingRouter = require("./routes/booking");
+const flightRouter = require("./routes/flights");
 
 const app = express();
 app.use(express.json());
@@ -17,6 +18,7 @@ app.get("/newyear", (req, res) => {
 app.use(usersRouter);
 app.use(airportsRouter);
 app.use(bookingRouter);
+app.use(flightRouter);
 
 const PORT = process.env.PORT || 1503;
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
