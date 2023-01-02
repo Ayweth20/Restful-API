@@ -5,6 +5,19 @@ GET http://localhost:1503/welcome
 GET http://localhost:1503/newyear
 
 ##################################
+############   LOGIN   ###########
+##################################
+
+### LOGIN
+POST http://localhost:1503/login
+Content-Type: application/json
+
+{
+    "email" : "john@doe.com",
+    "password" : "J0hnD0e1998*"
+}
+
+##################################
 ############   USER   ############
 ##################################
 
@@ -13,31 +26,34 @@ POST http://localhost:1503/user
 Content-Type: application/json
 
 {
-    "name" : "DOE John",
-    "email" : "john@doe.com",
-    "password" : "J0hnD0e1998*",
-    "dateOfBirth" : "1998-07-15",
-    "passportNumber" : "USA7654321",
-    "passportCountry" : "USA",
-    "role" : "passenger"
+    "name" : "GRISVAL Thibault",
+    "email" : "azerty@abc.com",
+    "password" : "Pas5W0rd1234*",
+    "dateOfBirth" : "2003-03-15",
+    "passportNumber" : "FRA1234567",
+    "passportCountry" : "FRA",
+    "role" : "admin"
 }
 
 ### GET ALL USERS
 GET http://localhost:1503/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJqb2huQGRvZS5jb20iLCJyb2xlIjoicGFzc2VuZ2VyIiwiaWF0IjoxNjcyNjU3NDEyfQ.WmNCDvZeUnPHR7bwuUb8smY2j6BBqIKc9HiDumDRIPQ
 
 ### GET A USER BY ID
-GET http://localhost:1503/user/1
+GET http://localhost:1503/user/5
 
 ### UPDATE A USER BY ID
-PUT http://localhost:1503/user/1
+PUT http://localhost:1503/user/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJqb2huQGRvZS5jb20iLCJyb2xlIjoicGFzc2VuZ2VyIiwiaWF0IjoxNjcyNjU3NDEyfQ.WmNCDvZeUnPHR7bwuUb8smY2j6BBqIKc9HiDumDRIPQ
 Content-Type: application/json
 
 {
-    "name" : "GRISVAL Thibault"
+    "passportNumber" : "FRA1234567"
 }
 
 ### DELETE A USER BY ID
-DELETE http://localhost:1503/user/2
+DELETE http://localhost:1503/user/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhemVydHlAYWJjLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY3MjY1NTM3NX0.6Kh2XvwhUmbBRxuJh5GVk2kYpomTWjT9w0DzZO3Txbs
 
 ##################################
 ###########   AIRPORT  ###########
@@ -45,13 +61,14 @@ DELETE http://localhost:1503/user/2
 
 ### CREATE A NEW AIRPORT
 POST http://localhost:1503/airport
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhemVydHlAYWJjLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY3MjY1NTM3NX0.6Kh2XvwhUmbBRxuJh5GVk2kYpomTWjT9w0DzZO3Txbs
 Content-Type: application/json
 
 {
-    "name" : "Starptautiska lidosta Riga",
-    "code" : "LET001",
-    "city" : "Riga",
-    "country" : "LATVIA"
+    "name" : "Orly Paris",
+    "code" : "FRA002",
+    "city" : "Paris",
+    "country" : "FRANCE"
 }
 
 ### GET ALL AIRPORTS
@@ -61,18 +78,20 @@ GET http://localhost:1503/airports
 GET http://localhost:1503/airports?country=France
 
 ### GET AN AIRPORT BY ID
-GET http://localhost:1503/airport/3
+GET http://localhost:1503/airport/7
 
 ### UPDATE AN AIRPORT BY ID
-PUT http://localhost:1503/airport/5
+PUT http://localhost:1503/airport/7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhemVydHlAYWJjLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY3MjY1NTM3NX0.6Kh2XvwhUmbBRxuJh5GVk2kYpomTWjT9w0DzZO3Txbs
 Content-Type: application/json
 
 {
-    "code" : "LAT001"
+    "code" : "FRA002"
 }
 
 ### DELETE AN AIRPORT BY ID
-DELETE http://localhost:1503/airport/3
+DELETE http://localhost:1503/airport/7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhemVydHlAYWJjLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY3MjY1NTM3NX0.6Kh2XvwhUmbBRxuJh5GVk2kYpomTWjT9w0DzZO3Txbs
 
 ##################################
 ############  BOOKING ############

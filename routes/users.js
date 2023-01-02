@@ -1,4 +1,7 @@
 const { Router } = require("express");
+const forbiddenError = require("../errors/ForbiddenError");
+const checkAuth = require("../middlewares/checkAuth");
+const checkRole = require("../middlewares/checkRole");
 const { User } = require("../models");
 
 const router = new Router();
@@ -15,7 +18,11 @@ router.post("/user", (req, res) => {
 });
 
 //GET all users
-router.get("/users", (req, res) => {
+router.get(
+    "/users", 
+    checkAuth, 
+    checkRole({ minRole: checkRole.Roles.admin }), 
+    (req, res) => {
     User.findAll({
         where: req.query,
         attributes: {exclude: "password"}
@@ -35,7 +42,9 @@ router.get("/user/:id", async (req, res) => {
 });
 
 //UPDATE a user by id
-router.put("/user/:id", async (req, res) => {
+router.put("/user/:id", checkAuth, async (req, res, next) => {
+    if (req.user.id !== parseInt(req.params.id)) throw new forbiddenError();
+
     User.update(req.body, {
         where: {id: parseInt(req.params.id)},
         individualHooks: true,
@@ -55,6 +64,8 @@ router.put("/user/:id", async (req, res) => {
 
 //DELETE a user by id
 router.delete("/user/:id", async (req, res) => {
+    if (req.user.id !== parseInt(req.params.id)) throw new forbiddenError();
+
     User.destroy({
         where: {id: parseInt(req.params.id)},
     })

@@ -1,16 +1,20 @@
 const { Router } = require("express");
 const { Airport } = require("../models");
+const forbiddenError = require("../errors/ForbiddenError");
+const checkAuth = require("../middlewares/checkAuth");
+const checkRole = require("../middlewares/checkRole");
 
 const router = new Router();
 
 //POST (create) a new airport
-router.post("/airport", (req, res) => {
+router.post("/airport", checkAuth, checkRole({ minRole: checkRole.Roles.admin }), (req, res) => {
     const airport = new Airport(req.body);
     airport
         .save()
         .then((data) => res.status(201).json(data))
         .catch((err) => {
             res.sendStatus(422);
+            console.log(err);
         });
 });
 
@@ -33,7 +37,7 @@ router.get("/airport/:id", async (req, res) => {
 });
 
 //UPDATE an airport by id
-router.put("/airport/:id", async (req, res) => {
+router.put("/airport/:id", checkAuth, checkRole({ minRole: checkRole.Roles.admin }), async (req, res) => {
     Airport.update(req.body, {
         where: {id: parseInt(req.params.id)},
         individualHooks: true,
@@ -50,7 +54,7 @@ router.put("/airport/:id", async (req, res) => {
 });
 
 //DELETE an airport by id
-router.delete("/airport/:id", async (req, res) => {
+router.delete("/airport/:id", checkAuth, checkRole({ minRole: checkRole.Roles.admin }), async (req, res) => {
     Airport.destroy({
         where: {id: parseInt(req.params.id)},
     })
