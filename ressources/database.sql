@@ -4,11 +4,11 @@ USE db_restful;
 
 CREATE TABLE airports (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
-    code VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    code VARCHAR(255) NOT NULL UNIQUE,
     city VARCHAR(255) NOT NULL,
     country VARCHAR(255) NOT NULL
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 CREATE TABLE flights (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -21,18 +21,18 @@ CREATE TABLE flights (
     capacity INT NOT NULL,
     FOREIGN KEY (origin) REFERENCES airports(code),
     FOREIGN KEY (arrival) REFERENCES airports(code)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     dateOfBirth DATE NOT NULL,
-    passportNumber VARCHAR(255) NOT NULL,
+    passportNumber VARCHAR(255) NOT NULL UNIQUE,
     passportCountry VARCHAR(255) NOT NULL,
     role VARCHAR(255) NOT NULL
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 CREATE TABLE bookings (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -43,4 +43,4 @@ CREATE TABLE bookings (
     dateBooked DATE NOT NULL,
     FOREIGN KEY (flightID) REFERENCES flights(id),
     FOREIGN KEY (userId) REFERENCES users(id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
