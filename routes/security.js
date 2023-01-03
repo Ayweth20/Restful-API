@@ -17,8 +17,6 @@ router.post('/login', async (req, res) => {
 
     if(!bcryptjs.compare(req.body.password, user.password)) return res.sendStatus(401);
 
-    console.log(user.role);
-
     res.json({
         token: jwt.sign(
             { 

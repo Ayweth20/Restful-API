@@ -14,7 +14,6 @@ router.post("/airport", checkAuth, checkRole({ minRole: checkRole.Roles.admin })
         .then((data) => res.status(201).json(data))
         .catch((err) => {
             res.sendStatus(422);
-            console.log(err);
         });
 });
 
