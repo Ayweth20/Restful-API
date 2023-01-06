@@ -1,10 +1,13 @@
 const { Router } = require("express");
 const { Booking } = require("../models");
+const forbiddenError = require("../errors/ForbiddenError");
+const checkAuth = require("../middlewares/checkAuth");
+const checkRole = require("../middlewares/checkRole");
 
 const router = new Router();
 
 //create a new booking
-router.post("/booking", (req, res) => {
+router.post("/booking",checkAuth, (req, res) => {
     const booking = new Booking(req.body);
     booking
         .save()
@@ -16,7 +19,7 @@ router.post("/booking", (req, res) => {
 });
 
 //GET all bookings
-router.get("/bookings", (req, res) => {
+router.get("/bookings",checkAuth, checkRole({ minRole: checkRole.Roles.admin }), async (req, res) => {
     Booking.findAll({
         where: req.query,
     })
@@ -24,7 +27,7 @@ router.get("/bookings", (req, res) => {
 });
 
 //GET an booking by id
-router.get("/booking/:id", async (req, res) => {
+router.get("/booking/:id", checkAuth, checkRole({ minRole: checkRole.Roles.admin }), async (req, res) => {
     const booking = await Booking.findByPk(parseInt(req.params.id));
     if (booking) {
         res.json(booking);
@@ -34,7 +37,7 @@ router.get("/booking/:id", async (req, res) => {
 });
 
 //UPDATE an booking by id
-router.put("/booking/:id", async (req, res) => {
+router.put("/booking/:id",checkAuth, checkRole({ minRole: checkRole.Roles.admin }),async (req, res) => {
     Booking.update(req.body, {
         where: {id: parseInt(req.params.id)},
         individualHooks: true,
@@ -51,7 +54,7 @@ router.put("/booking/:id", async (req, res) => {
 });
 
 //DELETE an booking by id
-router.delete("/booking/:id", async (req, res) => {
+router.delete("/booking/:id",checkAuth, checkRole({ minRole: checkRole.Roles.admin }), async (req, res) => {
     Booking.destroy({
         where: {id: parseInt(req.params.id)},
     })
@@ -65,5 +68,7 @@ router.delete("/booking/:id", async (req, res) => {
         res.sendStatus(422);
     });
 });
+
+
 
 module.exports = router;

@@ -99,6 +99,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiO
 
 ### CREATE A NEW BOOKING
 POST http://localhost:1503/booking
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJqb2huQGRvZS5jb20iLCJyb2xlIjoicGFzc2VuZ2VyIiwiaWF0IjoxNjczMDI3MjE2fQ.e_kkoVQaiUAjCeBUFs0KYqIHAxyPLljsPVQxS-DhtHc
 Content-Type: application/json
 
 {

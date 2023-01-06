@@ -30,7 +30,7 @@ Booking.init({
         unique: false,
         allowNull: false,
         validate:{
-            is: /^[0-9]{0,2}[A-Z]{1}$/
+            is: /^[0-9]{0,2}$/
         }
     },
     status: {
