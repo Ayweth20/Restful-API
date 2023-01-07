@@ -4,7 +4,7 @@ const { Flight } = require("../models");
 const router = new Router();
 
 //create a new flight
-router.post("/flight", (req, res) => {
+router.post("/flight", checkAuth, checkRole({ minRole: checkRole.Roles.admin }), async (req, res) => {
     const flight = new Flight(req.body);
     flight
         .save()
@@ -16,7 +16,7 @@ router.post("/flight", (req, res) => {
 });
 
 //GET all flight
-router.get("/flights", (req, res) => {
+router.get("/flights", checkAuth, checkRole({ minRole: checkRole.Roles.passenger }), async (req, res) => {
     Flight.findAll({
         where: req.query,
     })
@@ -24,7 +24,7 @@ router.get("/flights", (req, res) => {
 });
 
 //GET an flight by id
-router.get("/flight/:id", async (req, res) => {
+router.get("/flight/:id", checkAuth, checkRole({ minRole: checkRole.Roles.passenger }), async (req, res) => {
     const flight = await Flight.findByPk(parseInt(req.params.id));
     if (flight) {
         res.json(flight);
@@ -34,7 +34,7 @@ router.get("/flight/:id", async (req, res) => {
 });
 
 //UPDATE an flight by id
-router.put("/flight/:id", async (req, res) => {
+router.put("/flight/:id", checkAuth, checkRole({ minRole: checkRole.Roles.admin }), async (req, res) => {
     Flight.update(req.body, {
         where: {id: parseInt(req.params.id)},
         individualHooks: true,
@@ -51,7 +51,7 @@ router.put("/flight/:id", async (req, res) => {
 });
 
 //DELETE an flight by id
-router.delete("/flight/:id", async (req, res) => {
+router.delete("/flight/:id", checkAuth, checkRole({ minRole: checkRole.Roles.admin }), async (req, res) => {
     Flight.destroy({
         where: {id: parseInt(req.params.id)},
     })
