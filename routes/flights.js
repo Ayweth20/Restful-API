@@ -1,5 +1,8 @@
 const { Router } = require("express");
 const { Flight } = require("../models");
+const forbiddenError = require("../errors/ForbiddenError");
+const checkAuth = require("../middlewares/checkAuth");
+const checkRole = require("../middlewares/checkRole");
 
 const router = new Router();
 
