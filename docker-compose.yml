@@ -1,0 +1,31 @@
+services:
+  mysqldb:
+    image: mysql:latest
+    container_name: RestfulAPI_MySQL
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_restful
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_HOST: '%'
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+  
+  app:
+    container_name: RestfulAPI_App
+    image: node:alpine
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    ports:
+      - 1503:1503
+    environment:
+      - PORT=1503
+      - DB_URL=mysql://root:root@mysqldb:3306/db_restful
+    command: sh -c "npm install && npm start"
+  
+volumes:
+  db: {}
