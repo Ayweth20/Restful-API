@@ -1,0 +1,164 @@
+### WELCOME PAGE
+GET http://localhost:1503/welcome
+
+### EASTER EGG ;p
+GET http://localhost:1503/newyear
+
+##################################
+############   LOGIN   ###########
+##################################
+
+### LOGIN
+POST http://localhost:1503/login
+Content-Type: application/json
+
+{
+    "email" : "john@doe.com",
+    "password" : "J0hnD0e1998*"
+}
+
+##################################
+############   USER   ############
+##################################
+
+### CREATE A NEW USER
+POST http://localhost:1503/user
+Content-Type: application/json
+
+{
+    "name" : "GRISVAL Thibault",
+    "email" : "azerty@abc.com",
+    "password" : "Pas5W0rd1234*",
+    "dateOfBirth" : "2003-03-15",
+    "passportNumber" : "FRA1234567",
+    "passportCountry" : "FRA",
+    "role" : "admin"
+}
+
+### GET ALL USERS
+GET http://localhost:1503/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJqb2huQGRvZS5jb20iLCJyb2xlIjoicGFzc2VuZ2VyIiwiaWF0IjoxNjcyNjU3NDEyfQ.WmNCDvZeUnPHR7bwuUb8smY2j6BBqIKc9HiDumDRIPQ
+
+### GET A USER BY ID
+GET http://localhost:1503/user/5
+
+### UPDATE A USER BY ID
+PUT http://localhost:1503/user/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJqb2huQGRvZS5jb20iLCJyb2xlIjoicGFzc2VuZ2VyIiwiaWF0IjoxNjcyNjU3NDEyfQ.WmNCDvZeUnPHR7bwuUb8smY2j6BBqIKc9HiDumDRIPQ
+Content-Type: application/json
+
+{
+    "passportNumber" : "FRA1234567"
+}
+
+### DELETE A USER BY ID
+DELETE http://localhost:1503/user/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhemVydHlAYWJjLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY3MjY1NTM3NX0.6Kh2XvwhUmbBRxuJh5GVk2kYpomTWjT9w0DzZO3Txbs
+
+##################################
+###########   AIRPORT  ###########
+##################################
+
+### CREATE A NEW AIRPORT
+POST http://localhost:1503/airport
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhemVydHlAYWJjLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY3MjY1NTM3NX0.6Kh2XvwhUmbBRxuJh5GVk2kYpomTWjT9w0DzZO3Txbs
+Content-Type: application/json
+
+{
+    "name" : "Orly Paris",
+    "code" : "FRA002",
+    "city" : "Paris",
+    "country" : "FRANCE"
+}
+
+### GET ALL AIRPORTS
+GET http://localhost:1503/airports
+
+### GET ALL AIRPORTS BY COUNTRY
+GET http://localhost:1503/airports?country=France
+
+### GET AN AIRPORT BY ID
+GET http://localhost:1503/airport/7
+
+### UPDATE AN AIRPORT BY ID
+PUT http://localhost:1503/airport/7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhemVydHlAYWJjLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY3MjY1NTM3NX0.6Kh2XvwhUmbBRxuJh5GVk2kYpomTWjT9w0DzZO3Txbs
+Content-Type: application/json
+
+{
+    "code" : "FRA002"
+}
+
+### DELETE AN AIRPORT BY ID
+DELETE http://localhost:1503/airport/7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhemVydHlAYWJjLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY3MjY1NTM3NX0.6Kh2XvwhUmbBRxuJh5GVk2kYpomTWjT9w0DzZO3Txbs
+
+##################################
+############  BOOKING ############
+##################################
+
+### CREATE A NEW BOOKING
+POST http://localhost:1503/booking
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJqb2huQGRvZS5jb20iLCJyb2xlIjoicGFzc2VuZ2VyIiwiaWF0IjoxNjczMDI3MjE2fQ.e_kkoVQaiUAjCeBUFs0KYqIHAxyPLljsPVQxS-DhtHc
+Content-Type: application/json
+
+{
+    "flightID" : "19",
+    "userId" : "04",
+    "seatNumber" : "07F",
+    "status" : "in flight",
+    "dateBooked" : "2022-10-10"
+}
+
+### GET ALL BOOKINGS
+GET http://localhost:1503/bookings
+
+### GET A BOOKING BY ID
+GET http://localhost:1503/booking/4
+
+### UPDATE AN BOOKING BY ID
+PUT http://localhost:1503/booking/5
+Content-Type: application/json
+
+{
+    "seatNumber" : "11A"
+}
+
+### DELETE AN BOOKING BY ID
+DELETE http://localhost:1503/booking/3
+
+##################################
+############  FLIGHTS ############
+##################################
+
+### CREATE A NEW FLIGHT
+POST http://localhost:1503/flight
+Content-Type: application/json
+
+{
+    "airline" : "Air France",
+    "dateStart" : "2023-02-20T04:33:12.000Z",
+    "dateEnd" : "2023-02-20T07:54:12.000Z",
+    "origin" : "LET001",
+    "arrival" : "FRA001",
+    "status" : "planned",
+    "capacity" : 128
+
+}
+
+### GET ALL FLIGHTS
+GET http://localhost:1503/flights
+
+### GET A FLIGHT BY ID
+GET http://localhost:1503/flight/1
+
+### UPDATE A FLIGHT BY ID
+PUT http://localhost:1503/flight/2
+Content-Type: application/json
+
+{
+    "airline" : "RyanAir"
+}
+
+### DELETE A FLIGHT BY ID
+DELETE http://localhost:1503/flight/3
