@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    container_name: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    volumes:
+      - ./app/ressources:/docker-entrypoint-initdb.d
+  
+  app:
+    container_name: api
+    depends_on:
+      - db
+    image: node:alpine
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    ports:
+      - 1503:1503
+    environment:
+      - PORT=1503
+      - DB_URL=mysql://root:root@db:3306/db_restful
+    command: sh -c "npm install && npm start"

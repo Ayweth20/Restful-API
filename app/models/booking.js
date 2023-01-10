@@ -45,6 +45,7 @@ Booking.init({
         allowNull:false
     }
 }, {
+    tableName: "bookings",
     sequelize: database,
     timestamps: false,
 });

@@ -50,6 +50,7 @@ Airport.init({
         }
     }
 }, {
+    tableName: "airports",
     sequelize: database,
     timestamps: false,
 });

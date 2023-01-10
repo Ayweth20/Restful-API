@@ -65,6 +65,7 @@ User.init({
         }
     }
 }, {
+    tableName: "users",
     sequelize: database,
     timestamps: false,
 });
